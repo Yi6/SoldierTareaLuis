@@ -20,11 +20,19 @@ setInterval(() => {
 const kovalsky = new Soldier("s1");
 
 
+
+
+setInterval(() => {
+  eventEmiter.update();
+  eventEmiter.send("update");
+},500);
+
+
 var mainCycle = setInterval(myEventEmiter, 1000);
 
 
 function myEventEmiter() {
-  eventEmiter.update();
+ // eventEmiter.update();
  // eventEmiter.send("update",1);
 
   var rand = Math.floor((Math.random() * 10) + 1);
@@ -32,6 +40,7 @@ function myEventEmiter() {
   if (rand > 5){
     eventEmiter.send("descansar");
   }else{eventEmiter.send("molestar");}
+
 
 }
 
