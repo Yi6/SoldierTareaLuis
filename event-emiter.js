@@ -22,9 +22,7 @@ module.exports = (() => {
         this._queue.shift()();
       }
     }
-    /**
-     * Registrar objetos con capcidad de recibir mensajes. listener.onMessage(event)
-     */
+    /** Registrar objetos con capcidad de recibir mensajes. listener.onMessage(event)*/
     register(listener) {
       this._listenersById.set(listener.id(), listener);
       this._listeners.push(listener);

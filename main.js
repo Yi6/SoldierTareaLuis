@@ -1,7 +1,7 @@
 const eventEmiter = require ('./event-emiter');
-const state = require ('./state');
+const State = require ('./state');
 const fsm = require ('./fsm');
-
+const Soldier = require ('./Soldier')
 //const Light = require ('./Light');
 
 /**Ciclo principal
@@ -13,23 +13,12 @@ setInterval(() => {
 
  **/
 
-var luis = {
-  id : function(){return 1;}
-}
-
-var Happy = new state();
-var Sad = new state();
-
-Happy.addStateToChange(Sad);
-Sad.addStateToChange(Happy);
-
-var bipolarMachine = new fsm(luis,[Happy,Sad]);
 
 
 
 
+const kovalsky = new Soldier("s1");
 
-/*
 
 var mainCycle = setInterval(myEventEmiter, 1000);
 
@@ -39,13 +28,14 @@ function myEventEmiter() {
  // eventEmiter.send("update",1);
 
   var rand = Math.floor((Math.random() * 10) + 1);
+  console.log(rand);
   if (rand > 5){
-    eventEmiter.send("happy",1);
-  }else{eventEmiter.send("sad",1);}
+    eventEmiter.send("descansar");
+  }else{eventEmiter.send("molestar");}
 
 }
 
 
-*/
+
 
 

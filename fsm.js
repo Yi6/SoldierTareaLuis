@@ -1,6 +1,6 @@
 "use strict";
 
-const eventEmiter = require('./event-emiter');
+const eventEmitter = require('./event-emiter');
 /**
  * Maquina de estados finita.
 */
@@ -10,7 +10,7 @@ module.exports = class Fsm {
     this._owner = owner;
     this._states = states;
     this._current = undefined;
-    eventEmiter.register(this);
+    eventEmitter.register(this);
   }
   
   id() {
@@ -30,7 +30,6 @@ module.exports = class Fsm {
    */
   onMessage(eventEmitter, event) {    
     if (event.msg === "update") {
-      console.log("OnUpdate");
       if (this._current) {
         this._current.onUpdate(eventEmitter, this);
       }

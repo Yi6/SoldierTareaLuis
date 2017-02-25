@@ -17,17 +17,13 @@ module.exports = class State {
 
   /**Se llama cada vez que el estado se activa */
   onEnter(eventEmitter, fsm) {
-  console.log("OnEnter");
   }
 
-  /**Si el estado esta activo se llama con cada ciclo
-   */
+  /**Si el estado esta activo se llama con cada ciclo*/
   onUpdate(eventEmitter, fsm) {
   }
 
-  /**Se llama cada vez que el estado se desactiva
-   */
+  /**Se llama cada vez que el estado se desactiva*/
   onExit(eventEmitter, fsm) {
-    console.log("OnExit");
   }
 }
