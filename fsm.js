@@ -34,7 +34,20 @@ module.exports = class Fsm {
         this._current.onUpdate(eventEmitter, this);
       }
     } else {
-      const state = this._states.find((s) => s.accepts(event))
+
+
+      /*Cambios para corregir el accept all*/
+      /*=======================================================================*/
+      //const state = this._states.find((s) => s.accepts(event))
+      const state = undefined;
+      if(this._current !== undefined )
+      {
+        const state = this._current.statesToChange.find((s) => s.accepts(event));
+      }
+      else{const state = this._states.find((s) => s.accepts(event))}
+      /*=======================================================================*/
+
+
       const accepted = state && state !== this._current;
       if (accepted) {
         if (this._current) {

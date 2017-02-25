@@ -14,7 +14,7 @@ class state_Descansando extends State
 {
     accepts(event)
     {
-        console.log("Descansando");
+        console.log("[Descansando]"+JSON.stringify(event));
         return event.msg === "descansar";
     }
     onEnter(eventEmitter, fsm)
@@ -31,7 +31,7 @@ class state_Molesto extends State
 {
     accepts(event)
     {
-        console.log("Molesto");
+        console.log("Molesto"+JSON.stringify(event));
         return event.msg === "molestar";
     }
     onEnter(eventEmitter, fsm)
@@ -44,7 +44,14 @@ class state_Molesto extends State
     }
 }
 
-const states = [new state_Descansando(), new state_Molesto()];
+//const states = [new state_Descansando(), new state_Molesto()];
+const st_Descansando = new state_Descansando();
+const st_Molesto = new state_Molesto();
+st_Descansando.addStateToChange(st_Molesto);
+st_Molesto.addStateToChange(st_Descansando);
+const states = [st_Descansando,st_Molesto];
+
+
 
 class Soldier
 {
