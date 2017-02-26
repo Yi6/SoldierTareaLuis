@@ -35,11 +35,15 @@ function myEventEmiter() {
  // eventEmiter.update();
  // eventEmiter.send("update",1);
 
-  var rand = Math.floor((Math.random() * 10) + 1);
-  console.log(rand);
-  if (rand > 5){
-    eventEmiter.send("descansar");
-  }else{eventEmiter.send("molestar");}
+  //console.log(rand);
+  //if (rand > 5){
+  //  eventEmiter.send("descansar");
+  //}else{eventEmiter.send("molestar");}
+
+  eventEmiter.send("descansar");
+  eventEmiter.send("molestar");
+  eventEmiter.send("enojar");
+  eventEmiter.send("enfureser");
 
 
 }

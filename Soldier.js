@@ -14,7 +14,9 @@ class state_Descansando extends State
 {
     accepts(event)
     {
-        //console.log("[Descansando]"+JSON.stringify(event));
+        console.log("");
+        console.log("[Descansando]"+JSON.stringify(event));
+
         return event.msg === "descansar";
     }
     onEnter(eventEmitter, fsm)
@@ -31,7 +33,9 @@ class state_Molesto extends State
 {
     accepts(event)
     {
-        //console.log("[Molesto]"+JSON.stringify(event));
+        console.log("");
+        console.log("[Molesto]"+JSON.stringify(event));
+
         return event.msg === "molestar";
     }
     onEnter(eventEmitter, fsm)
@@ -48,7 +52,9 @@ class state_Enojado extends State
 {
     accepts(event)
     {
-        //console.log("Enojado"+JSON.stringify(event));
+        console.log("");
+        console.log("Enojado"+JSON.stringify(event));
+
         return event.msg === "enojar";
     }
     onEnter(eventEmitter, fsm)
@@ -65,7 +71,9 @@ class state_Furioso extends State
 {
     accepts(event)
     {
-        //console.log("Furioso"+JSON.stringify(event));
+        console.log("");
+        console.log("Furioso"+JSON.stringify(event));
+
         return event.msg === "enfureser";
     }
     onEnter(eventEmitter, fsm)
@@ -90,14 +98,18 @@ const st_Furioso = new state_Furioso();
 /*Direccionamiento del Grafo(State Machine)*/
 st_Descansando.addStateToChange(st_Molesto);
 st_Descansando.addStateToChange(st_Enojado);
+st_Descansando.addStateToChange(st_Descansando);
 
 st_Molesto.addStateToChange(st_Descansando);
 st_Molesto.addStateToChange(st_Enojado);
+st_Molesto.addStateToChange(st_Molesto);
 
 st_Enojado.addStateToChange(st_Molesto);
 st_Enojado.addStateToChange(st_Furioso);
+st_Enojado.addStateToChange(st_Enojado);
 
 st_Furioso.addStateToChange(st_Enojado);
+st_Furioso.addStateToChange(st_Furioso);
 
 
 const states = [st_Descansando,st_Molesto,st_Enojado,st_Furioso];
