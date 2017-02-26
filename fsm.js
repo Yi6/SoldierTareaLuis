@@ -40,11 +40,14 @@ module.exports = class Fsm {
       /*=======================================================================*/
       //const state = this._states.find((s) => s.accepts(event))
       const state = undefined;
-      if(this._current !== undefined )
+      if(this._current != undefined )
       {
         const state = this._current.statesToChange.find((s) => s.accepts(event));
       }
-      else{const state = this._states.find((s) => s.accepts(event))}
+
+      else{const state = this._states.find((s) => s.accepts(event));}
+
+     // else{const state = this._states.find((s) => s.accepts(event))}
       /*=======================================================================*/
 
 

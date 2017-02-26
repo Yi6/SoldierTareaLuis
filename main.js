@@ -5,13 +5,12 @@ const Soldier = require ('./Soldier')
 //const Light = require ('./Light');
 
 /**Ciclo principal
-
+*/
 setInterval(() => {
   eventEmiter.update();
   eventEmiter.send("update");
 }, 100);
 
- **/
 
 
 
@@ -21,15 +20,25 @@ const kovalsky = new Soldier("s1");
 
 
 
-
+/*
 setInterval(() => {
   eventEmiter.update();
   eventEmiter.send("update");
-},500);
+},500);*/
 
-
+var timeTrace = "TimeTrace:";
+var counter = 0;
 var mainCycle = setInterval(myEventEmiter, 1000);
 
+
+
+setInterval(() => {
+  //eventEmiter.update();
+  //eventEmiter.send("Enemigo_DENTRO_del_area");
+  eventEmiter.update();
+  eventEmiter.send("Herido");
+
+},1000);
 
 function myEventEmiter() {
  // eventEmiter.update();
@@ -39,11 +48,22 @@ function myEventEmiter() {
   //if (rand > 5){
   //  eventEmiter.send("descansar");
   //}else{eventEmiter.send("molestar");}
+  if (counter === 3)
+  {
+    counter = 0;
+    eventEmiter.send("Sanando");
+  }
+  else
+  {
+    counter ++;
+    var rand = Math.floor((Math.random() * 10) + 1);
+    console.log(rand);
+    if (rand < 3){eventEmiter.send("Enemigo_DENTRO_del_area");}
+    else if (rand < 6){eventEmiter.send("Enemigo_FUERA_del_area");}
+    else{eventEmiter.send("Herido");}
+  }
 
-  eventEmiter.send("descansar");
-  eventEmiter.send("molestar");
-  eventEmiter.send("enojar");
-  eventEmiter.send("enfureser");
+
 
 
 }

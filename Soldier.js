@@ -6,18 +6,20 @@
 const State = require ('./state')
 const  Fsm = require ('./fsm')
 const eventEmitter = require ('./event-emiter')
-
+var timeTrace = "TimeTrace:";
 var inc = 0;
-
 /**/
 class state_Descansando extends State
 {
     accepts(event)
     {
-        console.log("");
         console.log("[Descansando]"+JSON.stringify(event));
-
-        return event.msg === "descansar";
+        var acceptsStates = false;
+        if (event.msg === "Enemigo_FUERA_del_area" || event.msg === "Sanando"){
+            acceptsStates = true;
+        }
+        return acceptsStates;
+        //return event.msg === "descansar";
     }
     onEnter(eventEmitter, fsm)
     {
@@ -33,10 +35,15 @@ class state_Molesto extends State
 {
     accepts(event)
     {
-        console.log("");
-        console.log("[Molesto]"+JSON.stringify(event));
 
-        return event.msg === "molestar";
+        console.log("[Molesto]"+JSON.stringify(event));
+        var acceptsStates = false;
+        if ( event.msg === "Enemigo_DENTRO_del_area" || event.msg === "Sanando")
+        {
+            acceptsStates = true;
+        }
+        return acceptsStates;
+        //return event.msg === "molestar";
     }
     onEnter(eventEmitter, fsm)
     {
@@ -52,10 +59,14 @@ class state_Enojado extends State
 {
     accepts(event)
     {
-        console.log("");
         console.log("Enojado"+JSON.stringify(event));
-
-        return event.msg === "enojar";
+        var acceptsStates = false;
+        if (event.msg === "Herido" || event.msg === "Sanando")
+        {
+            acceptsStates = true;
+        }
+        return acceptsStates;
+        //return event.msg === "enojar";
     }
     onEnter(eventEmitter, fsm)
     {
@@ -71,10 +82,15 @@ class state_Furioso extends State
 {
     accepts(event)
     {
-        console.log("");
-        console.log("Furioso"+JSON.stringify(event));
 
-        return event.msg === "enfureser";
+        console.log("Furioso"+JSON.stringify(event));
+        var acceptsStates = false;
+        if (event.msg === "Herido" || event.msg === "Sanando")
+        {
+            acceptsStates = true;
+        }
+        return acceptsStates;
+        //return event.msg === "enfureser";
     }
     onEnter(eventEmitter, fsm)
     {
