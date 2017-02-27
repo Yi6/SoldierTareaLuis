@@ -33,11 +33,13 @@ setInterval(() => {
 },1000);
 
 function myEventEmiter() {
+//Para sanar al Soldado cada 3 updates sanara
   if (counter === 3)
   {
     counter = 0;
     eventEmiter.send("Sanando");
   }
+//Random para la creacion de acciones
   else
   {
     counter ++;
